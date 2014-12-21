@@ -1,1 +1,9 @@
 .DS_Store
+
+/appcompat_v7/gen/
+
+/OpenGLESExtViewer/gen/
+
+/OpenGLESExtViewer/bin/
+
+/appcompat_v7/bin/
