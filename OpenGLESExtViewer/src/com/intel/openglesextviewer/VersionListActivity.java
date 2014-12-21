@@ -1,6 +1,7 @@
 package com.intel.openglesextviewer;
 
 import com.intel.openglesextviewer.dummy.DummyContent;
+import com.intel.openglesextviewer.dummy.OpenGLESVersionTester;
 import com.intel.openglesextviewer.dummy.DummyContent.DummyItem;
 import com.intel.openglesextviewer.dummy.TestGLSurfaceView;
 
@@ -59,15 +60,11 @@ public class VersionListActivity extends FragmentActivity
                     .setActivateOnItemClick(true);
         }    
         //<
-        // refer to: http://stackoverflow.com/questions/9198293/is-there-a-way-to-check-if-android-device-supports-opengl-es-2-0
         String MAX_KEY = "0";
         if (!DummyContent.ITEM_MAP.containsKey(MAX_KEY)) {
-            final ActivityManager activityManager = (ActivityManager)this.getSystemService(Context.ACTIVITY_SERVICE);
-            final int glesFullVersion = activityManager.getDeviceConfigurationInfo().reqGlEsVersion;
-            final int glesMajorVersion = (glesFullVersion & 0xFFFF0000) >> 16;
-            final int glesMinorVersion = glesFullVersion & 0x0000FFFF;
-            Log.i("TEST", String.format("reqGLESVersion: %d.%d", glesMajorVersion, glesMinorVersion));
-            DummyContent.addItem(new DummyItem(MAX_KEY, String.format("OpenGLES Max: %x.%x", glesMajorVersion, glesMinorVersion), glesMajorVersion, glesMinorVersion));        	
+        	OpenGLESVersionTester.OpenGLESVersion version = OpenGLESVersionTester.getMaxVersionSupported(this);
+            Log.i("VersionListActivity", String.format("Max version supported: %s", version));
+            DummyContent.addItem(new DummyItem(MAX_KEY, String.format("OpenGLES Max: %s", version), version.majorVersion, version.minorVersion));        	
         }
         //>
     }
