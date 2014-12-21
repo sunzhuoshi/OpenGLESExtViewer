@@ -21,7 +21,6 @@ package com.intel.openglesextviewer.dummy;
  */
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
