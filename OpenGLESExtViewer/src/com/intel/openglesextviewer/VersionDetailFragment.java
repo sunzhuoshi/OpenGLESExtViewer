@@ -60,6 +60,7 @@ public class VersionDetailFragment extends Fragment implements ResultHandler {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_version_detail, container, false);
         mTextView = ((TextView) rootView.findViewById(R.id.version_detail));
+        mTextView.setText("Testing ...");
         //<
         TestGLSurfaceView.setResultHandler(this);
         //>        
